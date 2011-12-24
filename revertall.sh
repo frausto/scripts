@@ -5,7 +5,7 @@ function revert() {
 	for sha in `git rev-list --all --grep $grep`
 	do
 		echo "reverting: $sha" 
-		`git revert -n $sha`
+		git revert -n $sha
 		echo "reverted!" 
 	done	
 }
