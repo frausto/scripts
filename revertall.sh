@@ -15,7 +15,7 @@ function revert() {
 	for sha in `git rev-list --all --grep $grep`
 	do
 		echo "reverting: $sha" 
-		local result=`git revert -n $sha 2>&1`
+		local result=`git revert --no-edit $sha 2>&1`
 		if echo -e $result | grep -E '(error|fatal):'
 		then
 			git st
