@@ -19,8 +19,9 @@ function revert() {
 		then
 			echo -e "\nRevert Failed, please commit changes and type 'revertall --continue' to continue reverting"
 			waitforfix
+		else
+			echo "reverted!" 
 		fi
-		echo "reverted!" 
 	done	
 }
  
