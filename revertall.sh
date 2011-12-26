@@ -6,6 +6,7 @@ function waitforfix {
 		then
 			break
 		fi
+		$input
 	done
 }
 
@@ -17,7 +18,9 @@ function revert() {
 		local result=`git revert -n $sha 2>&1`
 		if echo -e $result | grep -E '(error|fatal):'
 		then
-			echo -e "\nRevert Failed, please commit changes and type 'revertall --continue' to continue reverting"
+			git st
+			echo -e "\nRevert Failed: could not revert $sha"
+			echo "Please resolve conflicts, commit changes and type 'revertall --continue' to continue reverting"
 			waitforfix
 		else
 			echo "reverted!" 
